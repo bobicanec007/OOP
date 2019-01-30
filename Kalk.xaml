@@ -1,0 +1,67 @@
+﻿<Window x:Class="Kalkulator.Kalk"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kalkulator"
+        mc:Ignorable="d"
+        Title="Kalk" Height="300" Width="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox Grid.Row="0" Grid.ColumnSpan="5" Name="pomocniTextBox" Margin="5,5,5,4"
+                 FontWeight="Bold" FontSize="12" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="5" Name="ekranTextBox" Margin="5,5,5,4"
+        FontWeight="Bold" FontSize="16" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+        <Button Content="MC" Grid.Row="2" Name="mcButton" Margin="3"/>
+        <Button Content="MR" Grid.Row="2" Grid.Column="1" Name="mrButton" Margin="3"/>
+        <Button Content="MS" Grid.Row="2" Grid.Column="2" Name="msButton" Margin="3"/>
+        <Button Content="M+" Grid.Row="2" Grid.Column="3" Name="mpButton" Margin="3"/>
+        <Button Content="M-" Grid.Row="2" Grid.Column="4" Name="mmButton" Margin="3"/>
+
+        <Button Content="Back" Grid.Row="3" Name="backButton" Margin="3"/>
+        <Button Content="CE" Grid.Row="3" Grid.Column="1" Name="ceButton" Margin="3"/>
+        <Button Content="C" Grid.Row="3" Grid.Column="2" Name="cButton" Margin="3"/>
+        <Button Content="+-" Grid.Row="3" Grid.Column="3" Name="pmButton" Margin="3"/>
+        <Button Content="Sqrt" Grid.Row="3" Grid.Column="4" Name="sqrtButton" Margin="3"/>
+
+        <Button Content="7" Grid.Column="0" Grid.Row="4" Name="sedamButton" Margin="3" Click="PritisnutBroj"/>
+        <Button Content="8" Grid.Column="1" Grid.Row="4" Name="osamButton" Margin="3" Click="PritisnutBroj" />
+        <Button Content="9" Grid.Column="2" Grid.Row="4" Name="devetButton" Margin="3" Click="PritisnutBroj"/>
+        <Button Content="/" Grid.Column="3" Grid.Row="4" Name="podijeljenoButton" Margin="3" Click="podijeljenoButton_Click" />
+        <Button Content="%" Grid.Column="4" Grid.Row="4" Name="postoButton" Margin="3" />
+
+        <Button Content="4" Grid.Row="5" Name="cetriButton" Margin="3" Click="PritisnutBroj"/>
+        <Button Content="5" Grid.Column="1" Grid.Row="5" Name="petButton" Margin="3" Click="PritisnutBroj" />
+        <Button Content="6" Grid.Column="2" Grid.Row="5" Name="sestButton" Margin="3" Click="PritisnutBroj" />
+        <Button Content="*" Grid.Column="3" Grid.Row="5" Name="putaButton" Margin="3" Click="putaButton_Click" />
+        <Button Content="1/x" Grid.Column="4" Grid.Row="5" Name="jedanKrozXButton" Margin="3" />
+
+        <Button Content="1" Grid.Row="6" Name="jedanButton" Margin="3" Click="PritisnutBroj"/>
+        <Button Content="2" Grid.Column="1" Grid.Row="6" Name="dvaButton" Margin="3" Click="PritisnutBroj" />
+        <Button Content="3" Grid.Column="2" Grid.Row="6" Name="triButton" Margin="3" Click="PritisnutBroj" />
+        <Button Content="-" Grid.Column="3" Grid.Row="6" Name="minusButton" Margin="3" Click="minusButton_Click" />
+        <Button Content="=" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2" Name="jednakoButton" Margin="3" Click="jednakoButton_Click" />
+
+        <Button Content="0" Grid.Row="7" Grid.ColumnSpan="2" Name="nulaButton" Margin="3" Click="PritisnutBroj"/>
+        <Button Content="," Grid.Column="2" Grid.Row="7" Name="zarezButton" Margin="3"/>
+        <Button Content="+" Grid.Column="3" Grid.Row="7" Name="plusButton" Margin="3" Click="plusButton_Click" />
+    </Grid>
+</Window>
