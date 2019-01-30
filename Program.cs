@@ -1,100 +1,56 @@
-﻿using System;
+﻿using KosaricaZaKupovinu.Logika;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace KosaricaZaKupovinu
 {
-    public struct Knjiga
-    {
-        public double cijena;
-        public string tip;
-        public string autor;
-        public int kolicina;
-    }
-
     class Program
     {
-        private static List<Knjiga> knjige = new List<Knjiga>();
         static void Main(string[] args)
         {
-            Knjiga k1 = new Knjiga();
-            k1.tip = "Harry Potter i Kamen Mudraca";
-            k1.autor = "J.K.Rowling";
-            k1.cijena = 200;
-            k1.kolicina = 1;
-            knjige.Add(k1);
+            // Uđe marko u dućan
+            Vlasnik marko = new Vlasnik(
+                "marko@mev.com", "Marko Markovic", "Mihovljanska 12, Cakovec");
 
+            Console.WriteLine("Kupac: {0}", marko);
 
-            knjige.Add(new Knjiga
-            {
-                tip = "Pale sam na svijetu",
-                autor = "Mateo",
-                cijena = 100,
-                kolicina = 2,
-            });
+            // Marko mijenja adresu
+            marko.PromijeniAdresu("A.G.Markoša 113, Varaždin");
 
-            knjige.Add(new Knjiga
-            {
-                tip = "Harry Potter i Plameni Pehar",
-                autor = "J.K.Rowling",
-                cijena = 200,
-                kolicina = 3,
-            });
+            Console.WriteLine("Kupac mijenja adresu..\nKupac: {0}", marko);
 
-            knjige.Add(new Knjiga
-            {
-                tip = "Zlocin i Kazna",
-                autor = "Ivan Bartolic",
-                cijena = 140,
-                kolicina = 2,
-            });
+            // Marko uzima košaricu
+            Kosarica markovaKosarica = new Kosarica(marko);
 
-            knjige.Add(new Knjiga
+            //marko kupuje
+            Stavka st = new Stavka("TV LG 58 615", 8667.23m);
+            markovaKosarica.DodajStavku(st);
+            markovaKosarica.DodajStavku(new Stavka("Produzni kabel", 54.45m,2));
+            markovaKosarica.DodajStavku(new Stavka("Antena TVX", 123.50m, 1));
+
+            markovaKosarica.ObrisiStavku(st);
+
+            // Ispisati košaricu - u kolokviju
+            Console.WriteLine("\nIspis košarice\nID: {0}\nKupac: {1}\nStatus: {2}\nStavke:////////////////",
+            markovaKosarica.VratiId(), markovaKosarica.VratiVlasnika(),
+            markovaKosarica.VratiStatus());
+
+            //ispis stavka
+            int brojac = 0;
+            foreach(Stavka s in markovaKosarica.VratiStavke())
             {
-                tip = "Crvenkapica",
-                autor = "Josip Strosmajer",
-                cijena = 160,
-                kolicina = 4,
-            });
-            double min = double.MaxValue;
-            foreach (Knjiga k in knjige)
-            {
-                if (k.cijena < min)
-                {
-                    min = k.cijena;
-                }
+                Console.WriteLine("{0}. {1}", ++brojac, s);
             }
 
-            double ukupnaCijenaKnjiga = 0;
-            int brojKnjiga = 0;
-            foreach (Knjiga k in knjige)
-            {
-                brojKnjiga++;
-                ukupnaCijenaKnjiga += k.cijena;
-            }
+            //ukupno
+            Console.WriteLine("Ukupuno za platiti: {0}", markovaKosarica.VratiIznos());
+       
 
-            double ukupnaCijena = 0;
-            foreach (Knjiga k in knjige)
-            {
-                ukupnaCijena += k.kolicina * k.cijena;
-                Console.WriteLine("{0,-20}{1,-20}{2,10}{3,10}", k.tip, k.autor, k.cijena, k.kolicina);
-            }
-            Console.WriteLine("Ukopni iznos {0}", ukupnaCijena);
-            Console.WriteLine("Najeftinija knjiga {0}", min);
-            Console.WriteLine("Prosjecna cijena svih knjiga iznosi: {0}", ukupnaCijenaKnjiga / brojKnjiga);
+
+
         }
     }
 }
-
-
-//moramo napisati 10 knjiga u neku liste, ispiste prosjecnu cijenu artikla, 
-//napraviti strukturu sa par polja, list tip, tipa knjiga, dodati u tu listu 5knjiga, najeftinja knjiga je ta, prosjecna cijena je ta.
-//razredi nece biti na kolokviju-to danas.
-
-   //List<knjiga>
-   //3,4 knjige
-   //ukopni iznos
-   //najeftinije knjige
-   //prosjecnu cijenu
